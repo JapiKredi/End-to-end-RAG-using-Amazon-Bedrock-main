@@ -1,11 +1,15 @@
 import os
 import boto3
 import streamlit as st
-from langchain.llms.bedrock import Bedrock
-from langchain.embeddings import BedrockEmbeddings
-from langchain.document_loaders import PyPDFDirectoryLoader
+#from langchain.llms.bedrock import Bedrock
+#from langchain.embeddings import BedrockEmbeddings
+#from langchain.document_loaders import PyPDFDirectoryLoader
+#from langchain.vectorstores import FAISS
+from langchain_community.llms import Bedrock
+from langchain_community.embeddings import BedrockEmbeddings
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 from dotenv import load_dotenv
@@ -20,7 +24,7 @@ region_name = os.getenv("region_name")
 prompt_template = """
 
 Human: Use the following pieces of context to provide a 
-concise answer to the question at the end but use atleast summarize with 
+concise answer to the question at the end but use at least summarize with 
 250 words with detailed explantions. If you don't know the answer, 
 just say that you don't know, don't try to make up an answer.
 <context>
